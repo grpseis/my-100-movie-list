@@ -1,0 +1,55 @@
+[{
+  "_id": {
+    "$oid": "64686a8449c18f56096174ef"
+  },
+  "email": "delwing@hotmail.com",
+  "name": "delwingm",
+  "nickname": "delwing",
+  "birthdate": {
+    "$date": "1971-06-20T00:00:00.000Z"
+  },
+  "password": "$2b$05$P9EeNx/kbGkkAd5HwKi8fejaZiHHWKoQjpFPQbW7qOek.8SP/vllm",
+  "creationDate": {
+    "$date": "2023-05-20T06:36:52.660Z"
+  },
+  "lastUpdate": {
+    "$date": "2023-05-22T03:06:40.098Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "646ae77949c17f321d639e95"
+  },
+  "email": "klacatt_004@hotmail.com",
+  "name": "Kadel Lacatt",
+  "nickname": "klacatt_004",
+  "birthdate": {
+    "$date": "1981-09-25T00:00:00.000Z"
+  },
+  "password": "$2b$05$og.pVnoVuDrrkY7ef3O5LeS2QE5tkpCSlfGD2QvsKXKCOk2O83PMG",
+  "creationDate": {
+    "$date": "2023-05-22T03:54:33.120Z"
+  },
+  "lastUpdate": {
+    "$date": "2023-05-22T03:54:33.120Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "646bbdc56cb252c8b6155a3c"
+  },
+  "email": "correo@outlook.com",
+  "name": "federico",
+  "nickname": "federico",
+  "birthdate": {
+    "$date": "1971-06-20T00:00:00.000Z"
+  },
+  "password": "$2b$05$rys0S9jqWNc1f0aJJeyK8uKMBWB/uKIwDiMVeHEH6OPkHFf3OLxPu",
+  "creationDate": {
+    "$date": "2023-05-22T19:08:53.033Z"
+  },
+  "lastUpdate": {
+    "$date": "2023-05-22T19:08:53.033Z"
+  },
+  "__v": 0
+}]
