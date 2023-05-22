@@ -29,18 +29,19 @@ const registerUser = async (payload) => {
     }
 };
 
-const loginUser = async (username, password) => {
+const loginUser = async (email, password) => {
 
-    const user = await User.findOne({ nickname: username });
+    const user = await User.findOne({ email: email });
     if (!user) throw new error('Usuario no encontrado.');
 
     const passwordMatch = await user.comparePassword(password);
     if (!passwordMatch) throw new error('Contraseña invalida.');
 
-    return await createToken(username, "normal");
+    return await createToken(email, "normal");
 
 };
 
+// Listamos todos los usuarios
 const listUsers = async (req, res) => {
     try {
         const fuser = await User.find();
@@ -51,16 +52,27 @@ const listUsers = async (req, res) => {
     }
 }
 
-
+//Consultamos un usuario por su nickname
 const listoneUser = async (req, res) => {
     try {
         const fuser = await User.findOne({nickname: req.body.nickname});
         if (fuser) res.status(200).json(fuser);
-        else
-            throw new error();
+        else throw new error();
     } catch (error) {
           res.status(404).send({"Msg" : "Usuario no existe"});
     }
 }
 
-module.exports = { createToken, registerUser, loginUser, listUsers, listoneUser}
+
+//eliminamos un usuario
+const deleteUser = async (req, res) =>{
+    try{
+        const fuser = await User.findOneAndDelete({nickname: req.body.nickname});
+        if (fuser) res.status(200).send({"Msg" : "Usuario eliminado exitosamente"});
+        else throw new error();
+    } catch (e) {
+        res.status(500).send({"Msg" : "Usuario no encontrado para eliminar"})
+    }
+}
+
+module.exports = { createToken, registerUser, loginUser, listUsers, listoneUser, deleteUser}

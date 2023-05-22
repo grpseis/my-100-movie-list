@@ -5,23 +5,30 @@ const authMiddleware = require('../../middlewares/authorization');
 
 router.use(authMiddleware);
 
+
+
+
 router.get('/list/all', (req, res) => {
     //req.jwt_payload.role
-    res.send("Endpoint para consultar las listas de todos los usuarios");
+    //res.send("Endpoint para consultar las listas de todos los usuarios");
+
+    moviesMethods.allMovieslist(req, res);
 });
 
-router.get('/list/all', (req, res) => {
+/*router.get('/list/all', (req, res) => {
     res.send("Endpoint para consultar las listas de todos los usuarios");
+    moviesMethods.allMovieslist(req, res);
 });
-
+*/
 router.get('/list/:id', (req, res) => {
     res.send("Endpoint para consultar la lista de peliculas de un usuario: " + 
     JSON.stringify(req.params));
 });
 
-router.post('/list/:id/add', (req, res) => {
+router.post('/list/delwing/add', (req, res) => {
     res.send("Endpoint para añadir peliculas a una lista: " + 
     JSON.stringify(req.params));
+    moviesMethods.registerMovie(req, res);
 });
 
 router.delete('/list/:id/delete/:movie_id', (req, res) => {
