@@ -25,9 +25,8 @@ router.get('/list/:id', (req, res) => {
     JSON.stringify(req.params));
 });
 
-router.post('/list/delwing/add', (req, res) => {
-    res.send("Endpoint para añadir peliculas a una lista: " + 
-    JSON.stringify(req.params));
+router.post('/list/:id/add', (req, res) => {
+    //res.send("Endpoint para añadir peliculas a una lista: " + JSON.stringify(req.params));
     moviesMethods.registerMovie(req, res);
 });
 

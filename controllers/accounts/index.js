@@ -31,7 +31,7 @@ router.post('/login',async (req, res) => {
 
 
 //Lista todos los usuarios
-router.get('/listUsers',async (req , res) => {
+router.get('/movies/',async (req , res) => {
     accountsMethods.listUsers(req , res);    
 });
 

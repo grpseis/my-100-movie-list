@@ -13,15 +13,17 @@ const allMovieslist = async (req, res) => {
 }
 
 
-//agregamos una pelicula a una lista
+//agregamos una lista de peliculas nueva
 const registerMovie = async (req, res) => {
     try {
+        const userName = req.params.id;
         const { body } = req;
-        const saveMovies = async () => {
+       /* const saveMovies = async () => {
             let MovieIDs = [];
+            console.log("numero de peliculas",body.movies.length);
             for (let i = 0; i < body.movies.length; i++) {
                 const el = body.movies[i];
-                const newMovie = new movies({
+                const newMovie = new movieList({
                     name: el.name,
                     year: el.year,
                     image: el.image
@@ -33,19 +35,22 @@ const registerMovie = async (req, res) => {
         };
 
         const movieIDs = await saveMovies();
+        console.log(movieIDs);  */
 
-        const movieLi = new movieList({
+        const saveMovie = new movieList({
             name: body.name,
-            owner: body.owner,
+            owner: userName,
             rating: body.rating,
-            movies: movieIDs,
+            //movies: movieIDs,
+            movies: body.movies
         });
-
-        const savedMovieli = await movieList.save();
-        res.status(201).json(savedMovieli);
+        //console.log(saveMovie);
+        //return saveMovie;
+        await saveMovie.save();
+        res.status(200).json(saveMovie);
     }catch (error) {
         console.log(error);
-        if (error.code === 11000) throw new error('Película no disponible');
+        if (error.code === 11000) throw new error('No se pudo agregar la lista de películas');
         else throw error;
     }
 };
