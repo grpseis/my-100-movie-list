@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const User = require('../../models/users');
+const { json } = require("express");
 
 const createToken = async (user, role) => {
     const tokenPayload = {
@@ -40,6 +41,26 @@ const loginUser = async (username, password) => {
 
 };
 
+const listUsers = async (req, res) => {
+    try {
+        const fuser = await User.find();
+        if (!fuser) throw new error('No hay usuarios');
+        res.json(fuser);
+    } catch (error) {
+        res.status(500).send("No hay usuarios");
+    }
+}
 
 
-module.exports = { createToken, registerUser, loginUser }
+const listoneUser = async (req, res) => {
+    try {
+        const fuser = await User.findOne({nickname: req.body.nickname});
+        if (fuser) res.status(200).json(fuser);
+        else
+            throw new error();
+    } catch (error) {
+          res.status(404).send({"Msg" : "Usuario no existe"});
+    }
+}
+
+module.exports = { createToken, registerUser, loginUser, listUsers, listoneUser}

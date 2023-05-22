@@ -29,4 +29,16 @@ router.post('/login',async (req, res) => {
        
 });
 
+
+//Lista todos los usuarios
+router.get('/listUsers',async (req , res) => {
+    accountsMethods.listUsers(req , res);    
+});
+
+
+//buesca un usuario por su nickname
+router.get('/finduser',async (req , res) => {
+    accountsMethods.listoneUser(req, res);
+})
+
 module.exports = router;
