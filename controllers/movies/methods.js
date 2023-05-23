@@ -1,5 +1,5 @@
 const movieList = require("../../models/movieList");
-const { json } = require("express");
+//const { json } = require("express");
 
 //Consultamos todas las listas de los usuarios
 const allMovieslist = async (req, res) => {
