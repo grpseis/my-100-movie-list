@@ -56,29 +56,6 @@ const registerMovie = async (req, res) => {
     }
 };
 
-/* const saveMovies = async () => {
-     let MovieIDs = [];
-     console.log("numero de peliculas",body.movies.length);
-     for (let i = 0; i < body.movies.length; i++) {
-         const el = body.movies[i];
-         const newMovie = new movieList({
-             name: el.name,
-             year: el.year,
-             image: el.image
-         });
-         const savedMovies = await newMovie.save();
-         movieIDs.push(saveMovies._id);
-     }
-     return movieIDs;
- };
-
- const movieIDs = await saveMovies();
- console.log(movieIDs);  */
-
-
-
-
-
 // elimminar una película de una lista
 const deleteMovie = async (req, res) =>{
     try{
