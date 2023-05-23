@@ -81,17 +81,15 @@ const rateUser = async (req, res) => {
         if (!lamov) throw new error('No hay listas de películas');
         let sumaRate = 0;
         for (let i = 0; i < nroList; i++) {
-             console.log(lamov.rating[i]);
-             sumaRate += lamov.rating[i];
+             sumaRate += lamov[i].rating;
         }
-        console.log(sumaRate);
-        console.log(nroList);
         let promedio = sumaRate / nroList;
-
-        console.log(promedio);
-        lamov.rating = promedio;
+        // buscamos la lista del usuario a actualizar
+        userName = req.params.id;
+        const listaUpdaterate = await movieList.findOne({owner : userName});
+        listaUpdaterate.rating = promedio;
         updRate = await movieList.findOneAndUpdate({owner: userName},
-            lamov,
+            listaUpdaterate,
             {new: true});
         res.status(200).send({"Msg" : `El rating de ${userName}  ha sido actualizado a ${promedio}`});
     } catch (e) {
